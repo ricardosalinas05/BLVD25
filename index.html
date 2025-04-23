@@ -317,6 +317,86 @@
         font-size: 12px;
       }
     }
+
+    /* Estilos principales de tu página aquí... */
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    padding: 15px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .zoom-result {
+    display: none !important;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .hero {
+    height: 25vh;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .price {
+    font-size: 12px;
+  }
+
+  .size-selector {
+    display: block; /* Asegura que el selector de talla se muestre en móviles */
+    margin: 0;
+    padding: 10px;
+  }
+
+  .size-selector li {
+    font-size: 12px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -326,8 +406,8 @@
     <nav>
       <a href="#hombres">Hombres</a>
       <a href="#mujeres">Mujeres</a>
-      <a href="#novedades">Novedades</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#novedades">Novedades  </a>
+      <a href="#contacto">                    </a>
     </nav>
   </header>
 
@@ -336,19 +416,124 @@
          alt="Fondo detrás del texto" 
          class="hero-img-bg" />
   </section>
+  
 
   <section id="novedades">
     <h2 style="text-align:center; padding: 40px 0 10px;">Novedades</h2>
+    <!-- Video con medidas del carrusel -->
+<div class="video-container">
+  <video class="carousel-video" src="img/Video Promocional Marca Chilena Streetwear (Spot Publicitario).mp4" autoplay muted loop>
+    Tu navegador no soporta el elemento de video.
+  </video>
+</div>
+
+<style>
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Aumenté la altura a 400px */
+    overflow: hidden;
+    background-color: #000;
+    margin: 30px auto;
+  }
+
+  .carousel-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video cubra el área sin deformarse */
+    background-color: #000;
+  }
+</style>
+
+    
     
     <div class="product-grid">
       
+      
+      
       <!-- Productos 1-20 aquí -->
       <!-- Producto 1 -->
+<!-- Carrusel de Imágenes Independiente -->
+<div class="carousel-container">
+  <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+  <div class="carousel-track-container">
+    <div class="carousel-track" id="carousel-track">
+      <img src="img/carru 1.webp" alt="Imagen 1">
+      <img src="img/carru 2.webp" alt="Imagen 2">
+      <img src="img/carru 3.webp" alt="Imagen 3">
+      <img src="img/carru 4.webp" alt="Imagen 3">
+      <img src="img/carru 5.jpeg" alt="Imagen 3">
+    </div>
+  </div>
+  <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+</div>
+
+<style>
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Puedes cambiar la altura */
+    overflow: hidden;
+    background-color: #000;
+    margin: 30px auto;
+  }
+
+  .carousel-track-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+  }
+
+  .carousel-track img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #ffffff;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 8px 14px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+</style>
+
+<script>
+  let currentCarouselSlide = 0;
+
+  function moveCarousel(step) {
+    const track = document.getElementById('carousel-track');
+    const totalSlides = track.children.length;
+    currentCarouselSlide = (currentCarouselSlide + step + totalSlides) % totalSlides;
+    track.style.transform = `translateX(-${currentCarouselSlide * 100}%)`;
+  }
+</script>
+
+
+
+
+      
       <div class="card" onclick="openModal('Playera 1', ['img/2.webp', 'img/2_alt.webp'], 'Esta es una playera con estilo único, hecha con materiales de alta calidad.', 29.99)">
         <img src="img/2.webp" alt="Playera 1" />
         <div class="card-content">
           <h3>Playera 1</h3>
-          <p>Descripción breve del producto.</p>
+          <p>hola a toodos.</p>
           <div class="price">$29.99</div>
         </div>
       </div>
@@ -418,6 +603,7 @@
         </div>
       </div>
 
+      
       <div class="card" onclick="openModal('Playera 1', ['img/p8.jpeg', 'img/p8.jpeg'], 'Esta es una playera con estilo único, hecha con materiales de alta calidad.', 29.99)">
         <img src="img/p8.jpeg" alt="Playera 1" />
         <div class="card-content">
@@ -479,16 +665,7 @@
         </div>
       </div>
 
-      <div class="card" onclick="openModal('Playera 1', ['img/2.webp', 'img/2_alt.webp'], 'Esta es una playera con estilo único, hecha con materiales de alta calidad.', 29.99)">
-        <img src="img/2.webp" alt="Playera 1" />
-        <div class="card-content">
-          <h3>Playera 1</h3>
-          <p>Descripción breve del producto.</p>
-          <div class="price">$29.99</div>
-        </div>
-      </div>
-
-
+  
 
     </div>
   </section>
@@ -498,87 +675,277 @@
   </footer>
 
   <!-- Modal para el producto -->
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h2 id="modalTitle"></h2>
-      <div class="image-zoom-container">
-        <img id="modalImage" src="" alt="Imagen de producto" />
-        <div id="zoomLens" class="zoom-lens"></div>
-        <div id="zoomResult" class="zoom-result"></div>
-      </div>
-      <ul id="sizeSelector" class="size-selector">
-        <li>XS</li>
-        <li>S</li>
-        <li>M</li>
-        <li>L</li>
-        <li>XL</li>
-      </ul>
-      <div id="modalPrice" class="price"></div>
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <div class="image-zoom-container">
+      <img id="modalImage" src="" alt="Imagen de producto" />
+      <div id="zoomLens" class="zoom-lens"></div>
+      <div id="zoomResult" class="zoom-result"></div>
     </div>
+    <ul id="sizeSelector" class="size-selector">
+      <li onclick="selectSize(this)">XS</li>
+      <li onclick="selectSize(this)">S</li>
+      <li onclick="selectSize(this)">M</li>
+      <li onclick="selectSize(this)">L</li>
+      <li onclick="selectSize(this)">XL</li>
+    </ul>
+    <div id="modalPrice" class="price"></div>
+    <button class="add-to-cart-btn" onclick="addModalToCart()">Agregar al carrito</button>
   </div>
+</div>
 
-  <script>
-    // Función para abrir el modal con la imagen y los detalles del producto
-    function openModal(title, images, description, price) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalPrice').innerText = '$' + price.toFixed(2);
-      document.getElementById('modalImage').src = images[0];
-      document.getElementById('productModal').style.display = 'flex';
-      document.getElementById('sizeSelector').style.display = 'flex';
-      setupZoom();
+<!-- BOTÓN DEL CARRITO -->
+<div id="cart-btn" onclick="toggleCart()">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- PANEL DEL CARRITO -->
+<div id="cart-panel" class="cart-panel hidden">
+  <h3>Tu Carrito</h3>
+  <ul id="cart-items"></ul>
+  <div id="cart-total">Total: $0.00</div>
+  <button onclick="checkout()">Finalizar compra</button>
+</div>
+
+<!-- ESTILOS -->
+<style>
+  #cart-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 9999;
+    font-weight: bold;
+  }
+
+  .cart-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 300px;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 9998;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .cart-panel.show {
+    transform: translateX(0);
+  }
+
+  #cart-items li {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  #cart-panel button {
+    background: black;
+    color: rgb(233, 113, 8);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .add-to-cart-btn {
+    margin-top: 8px;
+    padding: 5px 10px;
+    background-color: #e4770a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 5px;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #333;
+  }
+
+  .size-selector li.selected {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .size-selector {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .size-selector li {
+    border: 1px solid black;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
+
+<!-- SCRIPTS -->
+<script>
+  let cart = [];
+  let selectedSize = null;
+  let modalProductName = "";
+  let modalProductPrice = 0;
+
+  function openModal(title, images, description, price) {
+    modalProductName = title;
+    modalProductPrice = price;
+    selectedSize = null;
+    document.querySelectorAll('#sizeSelector li').forEach(li => li.classList.remove('selected'));
+
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalPrice').innerText = '$' + price.toFixed(2);
+    document.getElementById('modalImage').src = images[0];
+    document.getElementById('productModal').style.display = 'flex';
+    document.getElementById('sizeSelector').style.display = 'flex';
+    setupZoom();
+  }
+
+  function selectSize(element) {
+    document.querySelectorAll('#sizeSelector li').forEach(li => li.classList.remove('selected'));
+    element.classList.add('selected');
+    selectedSize = element.innerText;
+  }
+
+  function addModalToCart() {
+    if (!selectedSize) {
+      alert("Por favor selecciona una talla.");
+      return;
     }
 
-    // Función para cerrar el modal
-    function closeModal() {
-      document.getElementById('productModal').style.display = 'none';
+    const existing = cart.find(item => item.name === modalProductName && item.size === selectedSize);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name: modalProductName, price: modalProductPrice, size: selectedSize, qty: 1 });
     }
 
-    // Función para configurar el zoom de la imagen
-    function setupZoom() {
-      const img = document.getElementById('modalImage');
-      const lens = document.getElementById('zoomLens');
-      const result = document.getElementById('zoomResult');
-      result.style.backgroundImage = `url(${img.src})`;
-      result.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
+    updateCartUI();
+    closeModal();
+  }
 
-      img.addEventListener('mousemove', (e) => {
-        moveLens(e);
-      });
+  function updateCartUI() {
+    const cartItems = document.getElementById("cart-items");
+    const cartCount = document.getElementById("cart-count");
+    const cartTotal = document.getElementById("cart-total");
 
-      img.addEventListener('mouseenter', () => {
-        lens.style.display = 'block';
-        result.style.display = 'block';
-      });
+    cartItems.innerHTML = "";
+    let total = 0;
+    let count = 0;
 
-      img.addEventListener('mouseleave', () => {
-        lens.style.display = 'none';
-        result.style.display = 'none';
-      });
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} (${item.size}) x${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
+      cartItems.appendChild(li);
+      total += item.price * item.qty;
+      count += item.qty;
+    });
 
-      function moveLens(e) {
-        const pos = getCursorPos(e);
-        let x = pos.x - lens.offsetWidth / 2;
-        let y = pos.y - lens.offsetHeight / 2;
+    cartCount.textContent = count;
+    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+  }
 
-        if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
-        if (x < 0) x = 0;
-        if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
-        if (y < 0) y = 0;
+  function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+  }
 
-        lens.style.left = `${x}px`;
-        lens.style.top = `${y}px`;
-        result.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
-      }
+  function toggleCart() {
+    document.getElementById("cart-panel").classList.toggle("show");
+  }
 
-      function getCursorPos(e) {
-        const rect = img.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        return { x, y };
-      }
+  function checkout() {
+    alert("¡Gracias por tu compra!");
+    cart = [];
+    updateCartUI();
+    toggleCart();
+  }
+
+  function setupZoom() {
+    const img = document.getElementById('modalImage');
+    const lens = document.getElementById('zoomLens');
+    const result = document.getElementById('zoomResult');
+    result.style.backgroundImage = `url(${img.src})`;
+    result.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
+
+    img.addEventListener('mousemove', (e) => {
+      moveLens(e);
+    });
+
+    img.addEventListener('mouseenter', () => {
+      lens.style.display = 'block';
+      result.style.display = 'block';
+    });
+
+    img.addEventListener('mouseleave', () => {
+      lens.style.display = 'none';
+      result.style.display = 'none';
+    });
+
+    function moveLens(e) {
+      const pos = getCursorPos(e);
+      let x = pos.x - lens.offsetWidth / 2;
+      let y = pos.y - lens.offsetHeight / 2;
+
+      if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
+      if (x < 0) x = 0;
+      if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
+      if (y < 0) y = 0;
+
+      lens.style.left = `${x}px`;
+      lens.style.top = `${y}px`;
+      result.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
     }
-  </script>
+
+    function getCursorPos(e) {
+      const rect = img.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      return { x, y };
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".card").forEach(card => {
+      const name = card.querySelector("h3").innerText;
+      const price = parseFloat(card.querySelector(".price").innerText.replace('$', ''));
+
+      const button = document.createElement("button");
+      button.classList.add("add-to-cart-btn");
+      button.innerText = "Agregar al carrito";
+      button.onclick = (e) => {
+        e.stopPropagation();
+        addToCart(name, price);
+      };
+
+      card.querySelector(".card-content").appendChild(button);
+    });
+  });
+
+  function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name && !item.size);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    updateCartUI();
+  }
+</script>
+
 
 
 
