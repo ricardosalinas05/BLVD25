@@ -421,8 +421,9 @@
   <section id="novedades">
     <h2 style="text-align:center; padding: 40px 0 10px;">Novedades</h2>
     <!-- Video con medidas del carrusel -->
+<!-- Video con medidas del carrusel, responsive -->
 <div class="video-container">
-  <video class="carousel-video" src="img/Video Promocional Marca Chilena Streetwear (Spot Publicitario).mp4" autoplay muted loop>
+  <video class="carousel-video" src="img/Video Promocional Marca Chilena Streetwear (Spot Publicitario).mp4" autoplay muted loop playsinline>
     Tu navegador no soporta el elemento de video.
   </video>
 </div>
@@ -431,7 +432,7 @@
   .video-container {
     position: relative;
     width: 100%;
-    height: 400px; /* Aumenté la altura a 400px */
+    height: 400px;
     overflow: hidden;
     background-color: #000;
     margin: 30px auto;
@@ -440,10 +441,24 @@
   .carousel-video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que el video cubra el área sin deformarse */
+    object-fit: cover;
     background-color: #000;
   }
+
+  /* Responsive para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .video-container {
+      height: 250px; /* Reduce la altura en móviles */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video-container {
+      height: 200px;
+    }
+  }
 </style>
+
 
     
     
